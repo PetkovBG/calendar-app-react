@@ -1,9 +1,17 @@
+import styles from './Day.module.css';
 
-
-const Day = ({day}) => {
+const Day = ({ day, rowIndex }) => {
     return (
-        <div>
-            {day.format()}
+        <div className={styles['day-container']}>
+            <header className={styles['day-header']}>
+                {rowIndex === 0 && (
+                    <p className={styles['weekday-paragraph']}>
+                        {day.format('ddd')}
+                    </p>)}
+                <p className={styles['day-paragraph']}>
+                    {day.format('DD')}
+                </p>
+            </header>
         </div>
     );
 }

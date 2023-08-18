@@ -1,0 +1,23 @@
+.day-container {
+    border: 1px solid rgb(194, 193, 193);
+    display: flex;
+    flex-direction: column;
+}
+
+.day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weekday-paragraph {
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+}
+
+.weekday-paragraph {
+    padding: 0.25rem;
+    text-align: center;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
