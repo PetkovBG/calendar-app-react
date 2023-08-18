@@ -1,6 +1,15 @@
+import dayjs from 'dayjs';
 import styles from './Day.module.css';
 
 const Day = ({ day, rowIndex }) => {
+
+    const getCurrentDay = () => {
+        return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
+    }
+
+    const dayParagraphClass = getCurrentDay() ? styles['day-paragraph-current'] : styles['day-paragraph'];
+    console.log(dayParagraphClass);
+
     return (
         <div className={styles['day-container']}>
             <header className={styles['day-header']}>
@@ -8,7 +17,7 @@ const Day = ({ day, rowIndex }) => {
                     <p className={styles['weekday-paragraph']}>
                         {day.format('ddd')}
                     </p>)}
-                <p className={styles['day-paragraph']}>
+                <p className={`${dayParagraphClass}`}>
                     {day.format('DD')}
                 </p>
             </header>

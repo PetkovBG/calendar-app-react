@@ -15,9 +15,17 @@
     text-transform: uppercase;
 }
 
-.weekday-paragraph {
+.day-paragraph {
     padding: 0.25rem;
     text-align: center;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
+}
+
+.day-paragraph-current {
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+    width: 1.25rem;
+    align-items: center;
 }
