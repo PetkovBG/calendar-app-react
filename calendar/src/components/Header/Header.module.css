@@ -1,0 +1,24 @@
+.header-calendar {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.calendar-logo {
+    margin-right: .5rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.header-headline {
+    margin-right: 2.5rem;
+    color: gray;
+    font-weight: bold;
+}
+
+.header-btn {
+    border: 1px solid grey;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1.25rem;
+}
