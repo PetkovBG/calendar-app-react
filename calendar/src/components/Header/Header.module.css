@@ -16,9 +16,20 @@
     font-weight: bold;
 }
 
-.header-btn {
+.btn-header {
     border: 1px solid grey;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
     margin-right: 1.25rem;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    color: gray;
+    border: 1px solid gray;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: .5rem;
 }
