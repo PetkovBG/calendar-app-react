@@ -8,7 +8,6 @@ const Day = ({ day, rowIndex }) => {
     }
 
     const dayParagraphClass = getCurrentDay() ? styles['day-paragraph-current'] : styles['day-paragraph'];
-    console.log(dayParagraphClass);
 
     return (
         <div className={styles['day-container']}>
