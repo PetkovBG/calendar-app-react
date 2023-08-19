@@ -50,3 +50,10 @@
 .display-btn:hover {
     background-color: rgb(247, 245, 245);
 }
+
+.display-btn-current {
+    background-color: blue;
+    border-radius: 9999px;
+    color: white;
+    border: none;
+}

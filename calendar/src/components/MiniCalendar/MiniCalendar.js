@@ -12,6 +12,11 @@ const MiniCalendar = () => {
 
     const monthIndex = useSelector(state => state.appContext.monthIndex);
 
+    const getCurrentDay = (day) => {
+        return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
+    }
+
+
     useEffect(() => {
         setCurrentMonthIndex(monthIndex);
     }, [monthIndex]);
@@ -53,11 +58,14 @@ const MiniCalendar = () => {
                 ))}
                 {currentMonth.map((row, index) => (
                     <React.Fragment key={index}>
-                        {row.map((day, idx) => (
-                            <button key={idx} className={styles['display-btn']}>
+                        {row.map((day, idx) => {
+                            const isCurrentDay = getCurrentDay(day);
+    const dayBtnClass = isCurrentDay ? styles['display-btn-current'] : styles['display-btn'];
+                           return( <button key={idx} className={dayBtnClass}>
                                 <span>{day.format('D')}</span>
                             </button>
-                        ))}
+                        )
+                        })}
                     </React.Fragment>
                 ))}
             </div>
