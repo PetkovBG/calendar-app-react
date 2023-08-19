@@ -1,7 +1,25 @@
 import styles from './Header.module.css';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
+import dayjs from 'dayjs';
+
+import { useDispatch } from 'react-redux';
+import { appActions } from '../../store/appContext';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+
 
 const Header = () => {
+
+    const monthIndex = useSelector(state => state.appContext.monthIndex);
+    const dispatch = useDispatch();
+
+    const setMonthToPrevious = () => {
+        dispatch(appActions.setMonthIndex(monthIndex - 1));
+    }
+
+    const setMonthToNext = () => {
+        dispatch(appActions.setMonthIndex(monthIndex + 1));
+    }
+
     return (
         <header className={styles['header-calendar']}>
             <img src={logo} alt="calendar-logo" className={styles['calendar-logo']} />
@@ -9,16 +27,19 @@ const Header = () => {
             <button className={styles['btn-header']}>
                 Today
             </button>
-            <button className={styles['btn-secondary']}>
+            <button className={styles['btn-secondary']} onClick={setMonthToPrevious}>
                 <span className='material-icons-outlined cursor-pointer text-white'>
                     chevron_left
                 </span>
             </button>
-            <button className={styles['btn-secondary']}>
+            <button className={styles['btn-secondary']} onClick={setMonthToNext}>
                 <span className='material-icons-outlined cursor-pointer text-white'>
                     chevron_right
                 </span>
             </button>
+            <h2>
+                {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
+            </h2>
         </header>
 
     );

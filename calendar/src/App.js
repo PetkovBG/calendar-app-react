@@ -15,18 +15,27 @@ import { appActions } from './store/appContext';
 function App() {
 
   const monthIndex = useSelector(state => state.appContext.monthIndex);
+  const currentMonthValue = useSelector(state => state.appContext.currentMonth);
+  // console.log(monthIndex);
   const dispatch = useDispatch();
 
   const updateMonthIndex = () => {
     dispatch(appActions.setMonthIndex(monthIndex));
+  };
+
+  const updateCurrentMonth = () => {
+    dispatch(appActions.setCurrentMonth(monthIndex));
   }
 
   // console.table(getMonth());
   const [currentMonth, setCurrentMonth] = useState(getMonth());
   
+  // console.log('monthIndex', monthIndex);
+  // console.log('currentMonth', currentMonth);
 
+//TODO - check if this useEffect is neccessary
   useEffect(() => {
-    updateMonthIndex();
+    updateCurrentMonth();
   }, [monthIndex]);
 
   return (
@@ -35,7 +44,7 @@ function App() {
         <Header />
         <div className='wrapper-sidebar'>
           <SideBar />
-          <Month month={currentMonth} />
+          <Month month={currentMonthValue} />
         </div>
       </div>
     </>
