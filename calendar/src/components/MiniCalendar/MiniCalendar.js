@@ -39,16 +39,19 @@ const MiniCalendar = () => {
                 <p className={styles['mini-calendar-text']}>
                     {dayjs(new Date(dayjs().year(), currentMonthIndex)).format("MMMM YYYY")}
                 </p>
-                <button className={styles['arrow']} onClick={handlePreviousMonth}>
-                    <span className='material-icons-outlined arrow-span'>
-                        chevron_left
-                    </span>
-                </button>
-                <button className={styles['arrow']} onClick={handleNextMonth} >
-                    <span className='material-icons-outlined'>
-                        chevron_right
-                    </span>
-                </button>
+                <div className={styles['btn-wrapper']}>
+                    <button className={styles['arrow']} onClick={handlePreviousMonth}>
+                        <span className='material-icons-outlined arrow-span'>
+                            chevron_left
+                        </span>
+                    </button>
+                    <button className={styles['arrow']} onClick={handleNextMonth} >
+                        <span className='material-icons-outlined'>
+                            chevron_right
+                        </span>
+                    </button>
+                </div>
+
             </header>
             <div className={styles['mini-calendar-display']}>
                 {currentMonth[0].map((day, i) => (
@@ -60,11 +63,11 @@ const MiniCalendar = () => {
                     <React.Fragment key={index}>
                         {row.map((day, idx) => {
                             const isCurrentDay = getCurrentDay(day);
-    const dayBtnClass = isCurrentDay ? styles['display-btn-current'] : styles['display-btn'];
-                           return( <button key={idx} className={dayBtnClass}>
+                            const dayBtnClass = isCurrentDay ? styles['display-btn-current'] : styles['display-btn'];
+                            return (<button key={idx} className={dayBtnClass}>
                                 <span>{day.format('D')}</span>
                             </button>
-                        )
+                            )
                         })}
                     </React.Fragment>
                 ))}
