@@ -5,12 +5,18 @@ import { getMonth } from '../../common/common';
 
 import { useSelector } from 'react-redux';
 
+import { useDispatch } from 'react-redux';
+import { appActions } from '../../store/appContext';
+
 const MiniCalendar = () => {
+
+    const dispatch = useDispatch();
 
     const [currentMonthIndex, setCurrentMonthIndex] = useState(dayjs().month());
     const [currentMonth, setCurrentMonth] = useState(getMonth());
 
     const monthIndex = useSelector(state => state.appContext.monthIndex);
+    const miniCalendarMonth = useSelector(state => state.appContext.miniCalendarMonth);
 
     const getCurrentDay = (day) => {
         return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
@@ -25,12 +31,22 @@ const MiniCalendar = () => {
         setCurrentMonth(getMonth(currentMonthIndex))
     }, [currentMonthIndex])
 
+    useEffect(() => {
+        if (miniCalendarMonth !== null) {
+            dispatch(appActions.setMonthIndex(miniCalendarMonth));
+        }
+    }, [miniCalendarMonth])
+
     const handlePreviousMonth = () => {
         setCurrentMonthIndex(currentMonthIndex - 1);
     }
 
     const handleNextMonth = () => {
         setCurrentMonthIndex(currentMonthIndex + 1);
+    }
+
+    const handleMiniCalendarMonthChange = () => {
+        dispatch(appActions.setMiniCalendarMonth(currentMonthIndex));
     }
 
     return (
@@ -64,7 +80,7 @@ const MiniCalendar = () => {
                         {row.map((day, idx) => {
                             const isCurrentDay = getCurrentDay(day);
                             const dayBtnClass = isCurrentDay ? styles['display-btn-current'] : styles['display-btn'];
-                            return (<button key={idx} className={dayBtnClass}>
+                            return (<button key={idx} className={dayBtnClass} onClick={handleMiniCalendarMonthChange}>
                                 <span>{day.format('D')}</span>
                             </button>
                             )

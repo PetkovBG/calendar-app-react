@@ -5,6 +5,7 @@ import { getMonth } from "../common/common";
 const initialStateValues = {
     monthIndex: dayjs().month(),
     currentMonth: getMonth(),
+    miniCalendarMonth: null,
 }
 
 const appSlice = createSlice({
@@ -19,6 +20,10 @@ const appSlice = createSlice({
             const month = action.payload;
             state.currentMonth = getMonth(month);
         },
+        setMiniCalendarMonth(state, action) {
+            const month = action.payload;
+            state.miniCalendarMonth = month;
+        }
         // setCurrentMonth(state, action) {
         //     const currentMonth = action.payload;
         //     console.log('getM', getMonth())
