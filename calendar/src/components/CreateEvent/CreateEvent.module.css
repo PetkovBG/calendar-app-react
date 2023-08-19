@@ -1,0 +1,28 @@
+.create-event-btn {
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-out;
+    padding: 8px;
+    color: black;
+    background-color: white;
+}
+
+.create-event-btn:hover {
+box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.create-event-img {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.create-event-text {
+    padding-left: 0.75rem;
+    padding-right: 1.75rem;
+    color: gray;
+    font-size: 18px;
+}
