@@ -20,11 +20,16 @@ const Header = () => {
         dispatch(appActions.setMonthIndex(monthIndex + 1));
     }
 
+    // console.log('testLog', dayjs().month());
+    const hadnleReset = () => {
+        dispatch(appActions.setMonthIndex(dayjs().month()))
+    }
+
     return (
         <header className={styles['header-calendar']}>
             <img src={logo} alt="calendar-logo" className={styles['calendar-logo']} />
             <h1 className={styles['header-headline']}>Calendar</h1>
-            <button className={styles['btn-header']}>
+            <button className={styles['btn-header']} onClick={hadnleReset}>
                 Today
             </button>
             <button className={styles['btn-secondary']} onClick={setMonthToPrevious}>
@@ -37,7 +42,7 @@ const Header = () => {
                     chevron_right
                 </span>
             </button>
-            <h2>
+            <h2 className={styles['heading-secondary']}>
                 {dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}
             </h2>
         </header>

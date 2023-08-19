@@ -33,3 +33,9 @@
     margin-bottom: 0.5rem;
     border-radius: .5rem;
 }
+
+.heading-secondary {
+    font-weight: bold;
+    color: gray;
+    margin-left: 1rem;
+}
