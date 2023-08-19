@@ -25,3 +25,28 @@
 .arrow:hover {
     color: black;
 }
+
+.mini-calendar-display {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.display-span {
+    text-align: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.display-btn {
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.display-btn:hover {
+    background-color: rgb(247, 245, 245);
+}

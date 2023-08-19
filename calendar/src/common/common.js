@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 //Setting the month to the current month by default
 
 export const getMonth = (month = dayjs().month()) => {
+    month = Math.floor(month);
     const year = dayjs().year();
     const firstWeekDayOfMonth = dayjs(new Date(year, month, 1)).day();
     let currentMonthCount = 0 - firstWeekDayOfMonth;
