@@ -17,8 +17,12 @@ const MiniCalendar = () => {
 
     const monthIndex = useSelector(state => state.appContext.monthIndex);
     const miniCalendarMonth = useSelector(state => state.appContext.miniCalendarMonth);
+    let selectedDay = useSelector(state => state.appContext.selectedDay);
+
+    let currentDay = '';
 
     const getCurrentDay = (day) => {
+        currentDay = day.format("DD-MM-YY");
         return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
     }
 
@@ -35,7 +39,7 @@ const MiniCalendar = () => {
         if (miniCalendarMonth !== null) {
             dispatch(appActions.setMonthIndex(miniCalendarMonth));
         }
-    }, [miniCalendarMonth])
+    }, [miniCalendarMonth]);
 
     const handlePreviousMonth = () => {
         setCurrentMonthIndex(currentMonthIndex - 1);
@@ -47,6 +51,10 @@ const MiniCalendar = () => {
 
     const handleMiniCalendarMonthChange = () => {
         dispatch(appActions.setMiniCalendarMonth(currentMonthIndex));
+    };
+
+    const handleSelectedDay = (day) => {
+        dispatch(appActions.setSelectedDay(day));
     }
 
     return (
@@ -79,8 +87,20 @@ const MiniCalendar = () => {
                     <React.Fragment key={index}>
                         {row.map((day, idx) => {
                             const isCurrentDay = getCurrentDay(day);
+                            let formattedDay = '';
+                            if (selectedDay) {
+                                formattedDay = selectedDay.format("DD-MM-YY")
+                            }
+                            const selectedClass = currentDay === formattedDay ? 'selected' : '';
+                            console.log('selectedClass', selectedClass);
                             const dayBtnClass = isCurrentDay ? styles['display-btn-current'] : styles['display-btn'];
-                            return (<button key={idx} className={dayBtnClass} onClick={handleMiniCalendarMonthChange}>
+                            const combinedClass = `${dayBtnClass}-${selectedClass}`;
+                            console.log('combinedClass', combinedClass);
+                            return (<button key={idx}   className={`${dayBtnClass} ${selectedClass === 'selected' ? styles.selected : ''}`}
+                            onClick={() => {
+                                handleMiniCalendarMonthChange()
+                                handleSelectedDay(day)
+                            }}>
                                 <span>{day.format('D')}</span>
                             </button>
                             )

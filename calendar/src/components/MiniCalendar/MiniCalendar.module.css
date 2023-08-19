@@ -62,3 +62,9 @@
     border: none;
 }
 
+.selected {
+    background-color: #89bae2;
+    color: #1E40AF;
+    font-weight: bold;
+    border-radius: 9999px;
+}

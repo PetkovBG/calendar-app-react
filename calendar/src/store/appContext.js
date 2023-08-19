@@ -6,6 +6,7 @@ const initialStateValues = {
     monthIndex: dayjs().month(),
     currentMonth: getMonth(),
     miniCalendarMonth: null,
+    selectedDay: null,
 }
 
 const appSlice = createSlice({
@@ -23,6 +24,10 @@ const appSlice = createSlice({
         setMiniCalendarMonth(state, action) {
             const month = action.payload;
             state.miniCalendarMonth = month;
+        },
+        setSelectedDay(state, action) {
+            const selectedDay = action.payload;
+            state.selectedDay = selectedDay;
         }
         // setCurrentMonth(state, action) {
         //     const currentMonth = action.payload;
