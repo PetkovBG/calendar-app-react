@@ -63,6 +63,11 @@ const EventModal = () => {
                         </div>
                     </div>
                 </div>
+                        <footer className={styles['modal-footer']}>
+                            <button className={styles['footer-btn']}>
+                                Save
+                            </button>
+                        </footer>
             </form>
         </div>
     );

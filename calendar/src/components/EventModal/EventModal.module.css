@@ -122,3 +122,26 @@
 .purple {
     background-color: rgb(194, 15, 194);
 }
+
+.modal-footer {
+    display: flex;
+    justify-content: end;
+    /* width: 100%; */
+    /* border-top: 1px solid #ccc; TODO - */
+    border-top: 1px solid #ccc;
+    padding: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.footer-btn {
+    background-color: #3b82f6;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.25rem;
+    color: white;
+    border: 1px solid #3b82f6;
+    /* margin-right: 2.25rem; */
+}
+
+.footer-btn:hover {
+    background-color: #2563eb;
+}
