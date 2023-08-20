@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { appActions } from '../../store/appContext';
 import { useSelector } from 'react-redux';
 
+const labelsEnum = ['gray', 'green', 'blue', 'red', 'purple'];
+
 const EventModal = () => {
 
     const [title, setTitle] = useState('');
@@ -44,6 +46,16 @@ const EventModal = () => {
                             segment
                         </span>
                         <input type='text' name='description' placeholder='Add description' className={styles['form-description']} required value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <span className='material-icons-outlined'>
+                            bookmark_border
+                        </span>
+                        <div className='label-container'>
+                            {labelsEnum.map(((label, i) => (
+                                <span key={i} className={styles[label]}>
+                                    Hi
+                                </span>
+                            )))}
+                        </div>
                     </div>
                 </div>
             </form>
