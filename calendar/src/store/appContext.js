@@ -6,7 +6,7 @@ const initialStateValues = {
     monthIndex: dayjs().month(),
     currentMonth: getMonth(),
     miniCalendarMonth: null,
-    selectedDay: null,
+    selectedDay: dayjs(),
     showModal: false,
 }
 

@@ -4,12 +4,15 @@ import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { appActions } from '../../store/appContext';
+import { useSelector } from 'react-redux';
 
 const EventModal = () => {
 
     const [title, setTitle] = useState('');
 
     const dispatch = useDispatch();
+
+    const selectedDay = useSelector(state => state.appContext.selectedDay);
 
     const handleCloseModal = () => {
         dispatch(appActions.setShowModal(false));
@@ -32,6 +35,10 @@ const EventModal = () => {
                     <div className={styles['modal-grid']}>
                         <div></div>
                         <input type='text' name='title' placeholder='Add title' className={styles['form-title']} required value={title} onChange={(e) => setTitle(e.target.value)} />
+                        <span className='material-icons-outlined'>
+                            schedule
+                        </span>
+                        <p>{selectedDay.format("dddd, MMMM DD")}</p>
                     </div>
                 </div>
             </form>
