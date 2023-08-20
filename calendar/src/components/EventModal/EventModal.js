@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 const EventModal = () => {
 
     const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
 
     const dispatch = useDispatch();
 
@@ -39,6 +40,10 @@ const EventModal = () => {
                             schedule
                         </span>
                         <p>{selectedDay.format("dddd, MMMM DD")}</p>
+                        <span className='material-icons-outlined'>
+                            segment
+                        </span>
+                        <input type='text' name='description' placeholder='Add description' className={styles['form-description']} required value={description} onChange={(e) => setDescription(e.target.value)} />
                     </div>
                 </div>
             </form>
