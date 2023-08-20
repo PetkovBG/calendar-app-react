@@ -1,7 +1,20 @@
 import dayjs from 'dayjs';
 import styles from './Day.module.css';
 
+import { useDispatch } from 'react-redux';
+import { appActions } from '../../store/appContext';
+
 const Day = ({ day, rowIndex }) => {
+
+    const dispatch = useDispatch();
+
+    const handleSelectedDay = () => {
+        dispatch(appActions.setSelectedDay(day))
+    }
+
+    const handleShowModal = (boolean) => {
+        dispatch(appActions.setShowModal(boolean));
+    }
 
     const getCurrentDay = () => {
         return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
@@ -20,6 +33,12 @@ const Day = ({ day, rowIndex }) => {
                     {day.format('DD')}
                 </p>
             </header>
+            <div className={styles['day-box']} onClick={() => {
+                handleSelectedDay(day)
+                handleShowModal(true)
+            }}>
+                    
+            </div>
         </div>
     );
 }
