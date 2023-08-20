@@ -1,12 +1,16 @@
 import styles from './EventModal.module.css';
 
+import { useState } from 'react';
+
 import { useDispatch } from 'react-redux';
 import { appActions } from '../../store/appContext';
 
 const EventModal = () => {
 
+    const [title, setTitle] = useState('');
+
     const dispatch = useDispatch();
-    
+
     const handleCloseModal = () => {
         dispatch(appActions.setShowModal(false));
     }
@@ -24,6 +28,12 @@ const EventModal = () => {
                         </span>
                     </button>
                 </header>
+                <div className={styles['modal-body']}>
+                    <div className={styles['modal-grid']}>
+                        <div></div>
+                        <input type='text' name='title' placeholder='Add title' className={styles['form-title']} required value={title} onChange={(e) => setTitle(e.target.value)} />
+                    </div>
+                </div>
             </form>
         </div>
     );

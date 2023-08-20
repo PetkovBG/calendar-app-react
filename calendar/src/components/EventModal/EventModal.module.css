@@ -34,3 +34,34 @@
     cursor: pointer;
     background-color: #f0f4f8;
 }
+
+.modal-body {
+padding: 0.75rem;
+}
+
+.modal-grid {
+display: grid;
+grid-template-columns: repeat(1fr 5fr);
+align-items: end;
+gap: .75rem;
+/* justify-content: center; */
+}
+
+.form-title {
+padding-top: 0.75rem;
+padding-bottom: 0.5rem;
+border: none;
+color: gray;
+font-size: 1.25rem;
+font-weight: bold;
+width: 100%;
+border-bottom: 2px solid #ccc;
+outline: none;
+transition: border-color .2s;
+}
+
+.form-title:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #2196F3;
+}
