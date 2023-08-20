@@ -7,6 +7,7 @@ const initialStateValues = {
     currentMonth: getMonth(),
     miniCalendarMonth: null,
     selectedDay: null,
+    showModal: false,
 }
 
 const appSlice = createSlice({
@@ -28,6 +29,10 @@ const appSlice = createSlice({
         setSelectedDay(state, action) {
             const selectedDay = action.payload;
             state.selectedDay = selectedDay;
+        },
+        setShowModal(state, action) {
+            const boolean = action.payload;
+            state.showModal = boolean;
         }
         // setCurrentMonth(state, action) {
         //     const currentMonth = action.payload;

@@ -17,6 +17,7 @@ function App() {
 
   const monthIndex = useSelector(state => state.appContext.monthIndex);
   const currentMonthValue = useSelector(state => state.appContext.currentMonth);
+  const showModal = useSelector(state => state.appContext.showModal);
   // console.log(monthIndex);
   const dispatch = useDispatch();
 
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <>
-    <EventModal />
+    {showModal && <EventModal />}
       <div className='wrapper-div'>
         <Header />
         <div className='wrapper-sidebar'>
