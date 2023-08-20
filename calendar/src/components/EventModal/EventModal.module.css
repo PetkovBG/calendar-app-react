@@ -23,3 +23,14 @@
     padding: 0.5rem 1rem;
     background-color: #f0f4f8;
 }
+
+.modal-header span {
+    color: gray;
+    cursor: pointer;
+}
+
+.modal-header button {
+    border: none;
+    cursor: pointer;
+    background-color: #f0f4f8;
+}

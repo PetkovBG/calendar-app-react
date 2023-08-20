@@ -10,6 +10,7 @@ import SideBar from './components/SideBar/SideBar';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useDispatch } from 'react-redux';
 import { appActions } from './store/appContext';
+import EventModal from './components/EventModal/EventModal';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <>
+    <EventModal />
       <div className='wrapper-div'>
         <Header />
         <div className='wrapper-sidebar'>
