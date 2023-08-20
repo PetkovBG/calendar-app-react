@@ -12,6 +12,7 @@ const EventModal = () => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [selectedLabel, setSelectedLabel] = useState(labelsEnum[0]);
 
     const dispatch = useDispatch();
 
@@ -51,8 +52,12 @@ const EventModal = () => {
                         </span>
                         <div className='label-container'>
                             {labelsEnum.map(((label, i) => (
-                                <span key={i} className={styles[label]}>
-                                    Hi
+                                <span key={i} onClick={() => setSelectedLabel(label)} className={styles[label]}>
+                                    {selectedLabel === label &&
+                                        <span className='material-icons-outlined'>
+                                            check
+                                        </span>
+                                    }
                                 </span>
                             )))}
                         </div>
