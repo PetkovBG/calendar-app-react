@@ -35,3 +35,64 @@
     display: flex;
     flex: 1;
 }
+
+.green-event-container {
+    background-color: #34D399;
+    padding: 0.25rem;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+}
+
+.gray-event-container {
+    background-color: gray;
+    padding: 0.25rem;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+}
+
+.red-event-container {
+    background-color: rgb(243, 51, 29);
+    padding: .25rem;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    max-width: 100%;
+}
+
+.blue-event-container {
+    background-color: aqua;
+    padding: 0.25rem;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; TODO */
+}
+
+.purple-event-container {
+    background-color: rgb(194, 15, 194);
+    padding: 0.25rem;
+    margin-right: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; TODO */
+}

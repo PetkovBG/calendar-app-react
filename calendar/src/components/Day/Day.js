@@ -5,25 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { appActions } from '../../store/appContext';
 import { eventActions } from '../../store/events';
 // import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { initializeEvents } from '../../common/localStorage';
 
 const Day = ({ day, rowIndex }) => {
 
+    const [dayEvents, setDayEvents] = useState([]);
+
     const dispatch = useDispatch();
 
     const savedEvents = useSelector(state => state.eventContext);
-    // console.log('daySavedEvents', savedEvents);
 
-    let latestEvents = '';
-    // const events = initializeEvents();
-
-    
     useEffect(() => {
         // latestEvents = dispatch(eventActions.getEvents());
         // const events = initializeEvents();
+        const events = savedEvents.filter((event) => dayjs(event.day).format("DD-MM-YY") === day.format("DD-MM-YY"));
+        setDayEvents(events)
         console.log('useE', savedEvents);
-    }, [savedEvents])
+    }, [savedEvents, day])
 
     // console.log('latestEvents', latestEvents);
     // console.log('daySavedEvents', savedEvents);
@@ -57,7 +56,11 @@ const Day = ({ day, rowIndex }) => {
                 handleSelectedDay(day)
                 handleShowModal(true)
             }}>
-                    
+                {dayEvents.map((evt, i) => (
+                    <div className={styles[`${evt.label}-event-container`]} key={i}>
+                        {evt.title}
+                    </div>
+                ))}
             </div>
         </div>
     );
