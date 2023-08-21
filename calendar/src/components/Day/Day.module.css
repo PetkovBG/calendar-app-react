@@ -32,8 +32,8 @@
 
 .day-box {
     cursor: pointer;
-    display: flex;
-    flex: 1;
+    /* display: flex; TODO - check if we need flex to proper display events */
+    /* flex: 1; */
 }
 
 .green-event-container {
