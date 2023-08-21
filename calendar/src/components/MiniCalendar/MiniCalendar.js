@@ -92,10 +92,10 @@ const MiniCalendar = () => {
                                 formattedDay = selectedDay.format("DD-MM-YY")
                             }
                             const selectedClass = currentDay === formattedDay ? 'selected' : '';
-                            console.log('selectedClass', selectedClass);
+                            // console.log('selectedClass', selectedClass);
                             const dayBtnClass = isCurrentDay ? styles['display-btn-current'] : styles['display-btn'];
                             const combinedClass = `${dayBtnClass}-${selectedClass}`;
-                            console.log('combinedClass', combinedClass);
+                            // console.log('combinedClass', combinedClass);
                             return (<button key={idx}   className={`${dayBtnClass} ${selectedClass === 'selected' ? styles.selected : ''}`}
                             onClick={() => {
                                 handleMiniCalendarMonthChange()

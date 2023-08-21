@@ -1,13 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { initializeEvents } from "../common/localStorage";
 
 const initialStateValues = [];
 
+const persistedEvents = initializeEvents();
+
 const eventSlice = createSlice({
-    name: 'eventSlice',
-    initialState: initialStateValues,
+    name: 'eventContext',
+    initialState: persistedEvents,
     reducers: {
-        addevent(state, action) {
-            state = [...state, action.payload];
+        addEvent(state, action) {
+            console.log('addEvent', action.payload);
+            // state = [...state, action.payload];
+            state.push(action.payload);
+            console.log(state);
+            localStorage.setItem('savedEvents', JSON.stringify(state));
         },
         updateEvent(state, action) {
             const updatedEvent = action.payload;

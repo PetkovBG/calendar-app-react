@@ -1,10 +1,11 @@
 import styles from './EventModal.module.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { appActions } from '../../store/appContext';
 import { useSelector } from 'react-redux';
+import { eventActions } from '../../store/events';
 
 const labelsEnum = ['gray', 'green', 'blue', 'red', 'purple'];
 
@@ -17,14 +18,46 @@ const EventModal = () => {
     const dispatch = useDispatch();
 
     const selectedDay = useSelector(state => state.appContext.selectedDay);
+    const savedEvents = useSelector(state => state.eventContext);
+    console.log('savedE', savedEvents);
 
     const handleCloseModal = () => {
         dispatch(appActions.setShowModal(false));
     }
 
+    const handleAddEvent = (eventObj) => {
+        dispatch(eventActions.addEvent(eventObj))
+    }
+
+    // console.log('valueOf', selectedDay.valueOf());
+
+    // useEffect(() => {
+    //     const parsedEvents = initializeEvents();
+    //     // Update your Redux state with parsedEvents using an action
+    //     // dispatch(yourAction(parsedEvents));
+    // }, []); // Empty dependency array to run the effect only once
+
+    // useEffect(() => {
+    //     localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
+    // }, [savedEvents]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const calendarEvent = {
+            title,
+            description,
+            label: selectedLabel,
+            day: selectedDay.valueOf(),
+            id: Date.now(),
+        }
+        handleAddEvent(calendarEvent);
+        handleCloseModal();
+        // localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
+    }
+
     return (
         <div className={styles['modal-overlay']}>
-            <form className={styles['modal-form']}>
+            <form onSubmit={handleSubmit} className={styles['modal-form']}>
                 <header className={styles['modal-header']}>
                     <span className='material-icons-outlined'>
                         drag_handle
@@ -63,11 +96,11 @@ const EventModal = () => {
                         </div>
                     </div>
                 </div>
-                        <footer className={styles['modal-footer']}>
-                            <button className={styles['footer-btn']}>
-                                Save
-                            </button>
-                        </footer>
+                <footer className={styles['modal-footer']}>
+                    <button type='submit' className={styles['footer-btn']}>
+                        Save
+                    </button>
+                </footer>
             </form>
         </div>
     );

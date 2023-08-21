@@ -8,6 +8,7 @@ export const initializeEvents = () => {
 
 //TODO - use useEffect in component
 // get savedEvents with useSelector
+//trying to implement it in the Month component now - Aug 21
 
 // useEffect(() => {
 // localStorage.setItem('savedEvents', JSON.stringify(savedEvents))
