@@ -37,12 +37,12 @@ const Header = () => {
                 Today
             </button>
             <button className={styles['btn-secondary']} onClick={setMonthToPrevious}>
-                <span className='material-icons-outlined cursor-pointer text-white'>
+                <span className='material-icons-outlined'>
                     chevron_left
                 </span>
             </button>
             <button className={styles['btn-secondary']} onClick={setMonthToNext}>
-                <span className='material-icons-outlined cursor-pointer text-white'>
+                <span className='material-icons-outlined'>
                     chevron_right
                 </span>
             </button>

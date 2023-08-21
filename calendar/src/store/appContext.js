@@ -34,11 +34,7 @@ const appSlice = createSlice({
             const boolean = action.payload;
             state.showModal = boolean;
         }
-        // setCurrentMonth(state, action) {
-        //     const currentMonth = action.payload;
-        //     console.log('getM', getMonth())
-        //     state.currentMonth.push(getMonth());
-        // }
+ 
     }
 });
 

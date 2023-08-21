@@ -26,12 +26,19 @@
 
 .btn-secondary {
     color: gray;
-    border: 1px solid gray;
+    border: none;
     background-color: white;
     cursor: pointer;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    border-radius: .5rem;
+}
+
+.btn-secondary span {
+    cursor: pointer;
+}
+
+.btn-secondary span:hover {
+    color: black;
 }
 
 .heading-secondary {
