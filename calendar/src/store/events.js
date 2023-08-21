@@ -21,11 +21,15 @@ const eventSlice = createSlice({
             const updatedEvent = action.payload;
             console.log('updateEvent', updatedEvent);
             console.log('state', state);
-            return state.map(event => event.id === updatedEvent.id ? updatedEvent : event);
+            state = state.map(event => event.id === updatedEvent.id ? updatedEvent : event);
+            localStorage.setItem('savedEvents', JSON.stringify(state));
+            return state;
         },
         deleteEvent(state, action) {
             const id = action.payload.id;
-            return state.filter(event => event.id !== id);
+            state = state.filter(event => event.id !== id);
+            localStorage.setItem('savedEvents', JSON.stringify(state));
+            return state;
         },
         getEvents(state) {
             return state;

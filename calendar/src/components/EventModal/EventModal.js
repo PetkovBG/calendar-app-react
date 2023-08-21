@@ -43,6 +43,10 @@ const EventModal = () => {
         dispatch(eventActions.deleteEvent(eventObj));
     }
 
+    const resetSelectedEvent = () => {
+        dispatch(selectedActions.resetSelectedEvent());
+    }
+
 
 
     // console.log('valueOf', selectedDay.valueOf());
@@ -70,6 +74,7 @@ const EventModal = () => {
         if (selectedEvent) {
             console.log('selectedEvent if works');
             handleUpdateEvent(calendarEvent)
+            resetSelectedEvent();
         } else {
             console.log('selectedEvent else works');
             handleAddEvent(calendarEvent)
@@ -92,6 +97,7 @@ const EventModal = () => {
                             <span onClick={() => {
                                 handleDeleteEvent(selectedEvent)
                                 handleCloseModal()
+                                resetSelectedEvent()
                             }} className='material-icons-outlined'>
                                 delete
                             </span>

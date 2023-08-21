@@ -7,6 +7,9 @@ const selectedSlice = createSlice({
         setSelectedEvent(state, action) {
             const event = action.payload;
             state.selectedEvent = event;
+        },
+        resetSelectedEvent(state) {
+            state.selectedEvent = null;
         }
     }
 })
