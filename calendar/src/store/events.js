@@ -19,11 +19,13 @@ const eventSlice = createSlice({
         },
         updateEvent(state, action) {
             const updatedEvent = action.payload;
-            state = state.map(event => event.id === updatedEvent.id ? updatedEvent : event);
+            console.log('updateEvent', updatedEvent);
+            console.log('state', state);
+            return state.map(event => event.id === updatedEvent.id ? updatedEvent : event);
         },
         deleteEvent(state, action) {
             const id = action.payload.id;
-            state = state.filter(event => event.id !== id);
+            return state.filter(event => event.id !== id);
         },
         getEvents(state) {
             return state;

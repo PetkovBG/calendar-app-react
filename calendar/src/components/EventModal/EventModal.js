@@ -6,19 +6,25 @@ import { useDispatch } from 'react-redux';
 import { appActions } from '../../store/appContext';
 import { useSelector } from 'react-redux';
 import { eventActions } from '../../store/events';
+import { selectedActions } from '../../store/selectedEvent';
 
 const labelsEnum = ['gray', 'green', 'blue', 'red', 'purple'];
 
 const EventModal = () => {
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [selectedLabel, setSelectedLabel] = useState(labelsEnum[0]);
+    const selectedDay = useSelector(state => state.appContext.selectedDay);
+    const savedEvents = useSelector(state => state.eventContext);
+    const selectedEvent = useSelector(state => state.selectedContext.selectedEvent);
+    console.log('eventModalSelectedEvent', selectedEvent);
+
+    const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : '');
+    const [description, setDescription] = useState(selectedEvent ? selectedEvent.description : '');
+    const [selectedLabel, setSelectedLabel] = useState(
+        selectedEvent ? labelsEnum.find((label) => label === selectedEvent.label) :
+            labelsEnum[0]);
 
     const dispatch = useDispatch();
 
-    const selectedDay = useSelector(state => state.appContext.selectedDay);
-    const savedEvents = useSelector(state => state.eventContext);
     console.log('savedE', savedEvents);
 
     const handleCloseModal = () => {
@@ -28,6 +34,16 @@ const EventModal = () => {
     const handleAddEvent = (eventObj) => {
         dispatch(eventActions.addEvent(eventObj))
     }
+
+    const handleUpdateEvent = (eventObj) => {
+        dispatch(eventActions.updateEvent(eventObj));
+    }
+
+    const handleDeleteEvent = (eventObj) => {
+        dispatch(eventActions.deleteEvent(eventObj));
+    }
+
+
 
     // console.log('valueOf', selectedDay.valueOf());
 
@@ -48,9 +64,18 @@ const EventModal = () => {
             description,
             label: selectedLabel,
             day: selectedDay.valueOf(),
-            id: Date.now(),
+            id: selectedEvent ? selectedEvent.id : Date.now(),
         }
-        handleAddEvent(calendarEvent);
+
+        if (selectedEvent) {
+            console.log('selectedEvent if works');
+            handleUpdateEvent(calendarEvent)
+        } else {
+            console.log('selectedEvent else works');
+            handleAddEvent(calendarEvent)
+        }
+
+        // handleAddEvent(calendarEvent);
         handleCloseModal();
         // localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
     }
@@ -62,11 +87,22 @@ const EventModal = () => {
                     <span className='material-icons-outlined'>
                         drag_handle
                     </span>
-                    <button onClick={handleCloseModal}>
-                        <span className='material-icons-outlined'>
-                            close
-                        </span>
-                    </button>
+                    <div>
+                        {selectedEvent && (
+                            <span onClick={() => {
+                                handleDeleteEvent(selectedEvent)
+                                handleCloseModal()
+                            }} className='material-icons-outlined'>
+                                delete
+                            </span>
+                        )}
+                        <button onClick={handleCloseModal}>
+                            <span className='material-icons-outlined'>
+                                close
+                            </span>
+                        </button>
+                    </div>
+
                 </header>
                 <div className={styles['modal-body']}>
                     <div className={styles['modal-grid']}>

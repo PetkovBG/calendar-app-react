@@ -4,6 +4,7 @@ import styles from './Day.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { appActions } from '../../store/appContext';
 import { eventActions } from '../../store/events';
+import { selectedActions } from '../../store/selectedEvent';
 // import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useEffect, useState } from 'react';
 import { initializeEvents } from '../../common/localStorage';
@@ -39,6 +40,10 @@ const Day = ({ day, rowIndex }) => {
         return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
     }
 
+    const handleSelectedEvent = (eventObj) => {
+        dispatch(selectedActions.setSelectedEvent(eventObj))
+    }
+
     const dayParagraphClass = getCurrentDay() ? styles['day-paragraph-current'] : styles['day-paragraph'];
 
     return (
@@ -57,7 +62,7 @@ const Day = ({ day, rowIndex }) => {
                 handleShowModal(true)
             }}>
                 {dayEvents.map((evt, i) => (
-                    <div className={styles[`${evt.label}-event-container`]} key={i}>
+                    <div className={styles[`${evt.label}-event-container`]} key={i} onClick={() => handleSelectedEvent(evt)}>
                         {evt.title}
                     </div>
                 ))}
