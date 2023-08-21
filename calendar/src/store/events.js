@@ -13,7 +13,8 @@ const eventSlice = createSlice({
             console.log('addEvent', action.payload);
             // state = [...state, action.payload];
             state.push(action.payload);
-            console.log(state);
+            // state.push(action.payload); //TODO - check which way works better to update the state
+            console.log('state', state);
             localStorage.setItem('savedEvents', JSON.stringify(state));
         },
         updateEvent(state, action) {
@@ -23,6 +24,9 @@ const eventSlice = createSlice({
         deleteEvent(state, action) {
             const id = action.payload.id;
             state = state.filter(event => event.id !== id);
+        },
+        getEvents(state) {
+            return state;
         }
     }
 })

@@ -1,12 +1,32 @@
 import dayjs from 'dayjs';
 import styles from './Day.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { appActions } from '../../store/appContext';
+import { eventActions } from '../../store/events';
+// import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useEffect } from 'react';
+import { initializeEvents } from '../../common/localStorage';
 
 const Day = ({ day, rowIndex }) => {
 
     const dispatch = useDispatch();
+
+    const savedEvents = useSelector(state => state.eventContext);
+    // console.log('daySavedEvents', savedEvents);
+
+    let latestEvents = '';
+    // const events = initializeEvents();
+
+    
+    useEffect(() => {
+        // latestEvents = dispatch(eventActions.getEvents());
+        // const events = initializeEvents();
+        console.log('useE', savedEvents);
+    }, [savedEvents])
+
+    // console.log('latestEvents', latestEvents);
+    // console.log('daySavedEvents', savedEvents);
 
     const handleSelectedDay = () => {
         dispatch(appActions.setSelectedDay(day))
