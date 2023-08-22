@@ -59,7 +59,8 @@ export default App;
 
 //TODO
 // exit on click outside and esc - modal - done
-// improve styling - current date styling on main calendar
+// improve styling - current date styling on main calendar - done
 // improve modal styling
 //add labels functionality
 //Check current day styles on mini calendar
+//check if we need hardcoded events in localStorage upon first load
