@@ -64,3 +64,5 @@ export default App;
 //add labels functionality
 //Check current day styles on mini calendar
 //check if we need hardcoded events in localStorage upon first load
+//optional - clean up day on calendar with useEffect
+//update labelcolor in sidebar - Labels

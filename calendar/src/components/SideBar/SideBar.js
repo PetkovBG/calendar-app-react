@@ -1,4 +1,5 @@
 import CreateEvent from '../CreateEvent/CreateEvent';
+import Labels from '../Labels/Labels';
 import MiniCalendar from '../MiniCalendar/MiniCalendar';
 import styles from './SideBar.module.css';
 
@@ -7,6 +8,7 @@ const SideBar = () => {
         <aside className={styles['sidebar-aside']}>
             <CreateEvent />
             <MiniCalendar />
+            <Labels />
         </aside>
     );
 }

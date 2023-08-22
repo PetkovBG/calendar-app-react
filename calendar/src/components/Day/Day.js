@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { appActions } from '../../store/appContext';
 import { eventActions } from '../../store/events';
 import { selectedActions } from '../../store/selectedEvent';
+import {labelActions} from '../../store/labels';
 // import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useEffect, useState } from 'react';
 import { initializeEvents } from '../../common/localStorage';
@@ -16,6 +17,11 @@ const Day = ({ day, rowIndex }) => {
     const dispatch = useDispatch();
 
     const savedEvents = useSelector(state => state.eventContext);
+    const labels = useSelector(state => state.labelContext.labels);
+    console.log('labels', labels);
+    const handleSetLabels = (savedEvents) => {
+        dispatch(labelActions.setLabels(savedEvents))
+    }
 
     useEffect(() => {
         // latestEvents = dispatch(eventActions.getEvents());
@@ -24,6 +30,12 @@ const Day = ({ day, rowIndex }) => {
         setDayEvents(events)
         console.log('useE', savedEvents);
     }, [savedEvents, day])
+
+
+
+    useEffect(() => {
+        handleSetLabels(savedEvents);
+    }, [savedEvents])
 
     // console.log('latestEvents', latestEvents);
     // console.log('daySavedEvents', savedEvents);
