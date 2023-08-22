@@ -18,7 +18,6 @@ function App() {
   const monthIndex = useSelector(state => state.appContext.monthIndex);
   const currentMonthValue = useSelector(state => state.appContext.currentMonth);
   const showModal = useSelector(state => state.appContext.showModal);
-  // console.log(monthIndex);
   const dispatch = useDispatch();
 
   const updateMonthIndex = () => {
@@ -29,13 +28,9 @@ function App() {
     dispatch(appActions.setCurrentMonth(monthIndex));
   }
 
-  // console.table(getMonth());
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  
-  // console.log('monthIndex', monthIndex);
-  // console.log('currentMonth', currentMonth);
 
-//TODO - check if this useEffect is neccessary
+
   useEffect(() => {
     updateCurrentMonth();
   }, [monthIndex]);
@@ -61,7 +56,7 @@ export default App;
 // exit on click outside and esc - modal - done
 // improve styling - current date styling on main calendar - done
 // improve modal styling
-//add labels functionality
+//add labels functionality - done
 //Check current day styles on mini calendar
 //check if we need hardcoded events in localStorage upon first load
 //optional - clean up day on calendar with useEffect

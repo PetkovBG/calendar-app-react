@@ -20,11 +20,6 @@ const Header = () => {
         dispatch(appActions.setMonthIndex(monthIndex + 1));
     }
 
-    // console.log('testLog', dayjs().month());
-    // const hadnleReset = () => {
-    //     dispatch(appActions.setMonthIndex(dayjs().month()))
-    // }
-
     const hadnleReset = () => {
         dispatch(appActions.setMonthIndex(monthIndex === dayjs().month() ? monthIndex + Math.random() : dayjs().month()));
     }

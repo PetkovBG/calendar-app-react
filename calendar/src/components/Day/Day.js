@@ -3,12 +3,12 @@ import styles from './Day.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { appActions } from '../../store/appContext';
-import { eventActions } from '../../store/events';
 import { selectedActions } from '../../store/selectedEvent';
-import {labelActions} from '../../store/labels';
-// import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { labelActions } from '../../store/labels';
 import { useEffect, useState } from 'react';
-import { initializeEvents } from '../../common/localStorage';
+import { selectFilteredEvents } from '../../store/selector';
+
+
 
 const Day = ({ day, rowIndex }) => {
 
@@ -16,35 +16,28 @@ const Day = ({ day, rowIndex }) => {
 
     const dispatch = useDispatch();
 
+    const filteredEvents = useSelector(selectFilteredEvents);
+
     const savedEvents = useSelector(state => state.eventContext);
-    const labels = useSelector(state => state.labelContext.labels);
-    console.log('labels', labels);
     const handleSetLabels = (savedEvents) => {
         dispatch(labelActions.setLabels(savedEvents))
     }
 
     useEffect(() => {
-        // latestEvents = dispatch(eventActions.getEvents());
-        // const events = initializeEvents();
-        const events = savedEvents.filter((event) => dayjs(event.day).format("DD-MM-YY") === day.format("DD-MM-YY"));
+        const events = filteredEvents.filter(event => dayjs(event.day).format('DD-MM-YY') === day.format('DD-MM-YY'));
         setDayEvents(events)
-        console.log('useE', savedEvents);
-    }, [savedEvents, day])
-
+    }, [filteredEvents, day])
 
 
     useEffect(() => {
         handleSetLabels(savedEvents);
     }, [savedEvents])
 
-    // console.log('latestEvents', latestEvents);
-    // console.log('daySavedEvents', savedEvents);
-
     const handleSelectedDay = (e, day) => {
         const eventContent = e.target.textContent;
-        if(!eventContent) {
+        if (!eventContent) {
             dispatch(selectedActions.resetSelectedEvent());
-        } 
+        }
         dispatch(appActions.setSelectedDay(day))
     }
 
@@ -57,7 +50,6 @@ const Day = ({ day, rowIndex }) => {
     }
 
     const handleSelectedEvent = (eventObj) => {
-        console.log('eventObj', eventObj);
         dispatch(selectedActions.setSelectedEvent(eventObj))
     }
 

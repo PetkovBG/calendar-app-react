@@ -37,8 +37,6 @@
 
 .day-box {
     cursor: pointer;
-    /* display: flex; TODO - check if we need flex to proper display events */
-    /* flex: 1; TODO - this allows the user to click on the div */
     flex: 1;
 }
 
@@ -51,7 +49,6 @@
     margin-bottom: 0.25rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* white-space: nowrap; */
 }
 
 .gray-event-container {
@@ -63,7 +60,6 @@
     margin-bottom: 0.25rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* white-space: nowrap; */
 }
 
 .red-event-container {
@@ -75,7 +71,6 @@
     margin-bottom: 4rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* white-space: nowrap; */
     max-width: 100%;
 }
 
@@ -88,7 +83,6 @@
     margin-bottom: 2rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* white-space: nowrap; TODO */
 }
 
 .purple-event-container {
@@ -100,5 +94,4 @@
     margin-bottom: 2rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* white-space: nowrap; TODO */
 }

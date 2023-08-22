@@ -18,8 +18,6 @@ const labelSlice = createSlice({
         },
         updateLabel(state, action) {
             const payloadLabel = action.payload.label;
-            console.log('updateLabel', action.payload);
-            // const payloadChecked = action.payload.checked;
             
             return {
                 ...state,
@@ -30,13 +28,6 @@ const labelSlice = createSlice({
                     return label;
                 }))
             }
-            // state.labels.map((label) => {
-            //     console.log(label.checked);
-            //     if(label.label === payloadLabel) {
-            //         return {...label, checked: !label.checked}
-            //     }
-            //     return label;
-            // })
         },
     }
 });

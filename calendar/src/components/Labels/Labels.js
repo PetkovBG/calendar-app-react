@@ -27,7 +27,7 @@ const Labels = () => {
                     <label key={i} className={styles['label-lbl']} htmlFor={i} >
                         <input type='checkbox' id={i} checked={checked} 
                         className={styles[`${lblColor}-input`]} 
-                        onClick={() => toggleLabel({label: lbl, checked})}
+                        onChange={() => toggleLabel({label: lbl, checked})}
                         />
                         <span className={styles['label-span']}>{lbl}</span>
                     </label>

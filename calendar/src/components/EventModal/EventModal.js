@@ -13,9 +13,7 @@ const labelsEnum = ['gray', 'green', 'blue', 'red', 'purple'];
 const EventModal = () => {
 
     const selectedDay = useSelector(state => state.appContext.selectedDay);
-    const savedEvents = useSelector(state => state.eventContext);
     const selectedEvent = useSelector(state => state.selectedContext.selectedEvent);
-    console.log('eventModalSelectedEvent', selectedEvent);
 
     const [title, setTitle] = useState(selectedEvent ? selectedEvent.title : '');
     const [description, setDescription] = useState(selectedEvent ? selectedEvent.description : '');
@@ -25,7 +23,6 @@ const EventModal = () => {
 
     const dispatch = useDispatch();
 
-    // console.log('savedE', savedEvents);
 
     const handleCloseModal = () => {
         dispatch(selectedActions.resetSelectedEvent());
@@ -48,20 +45,6 @@ const EventModal = () => {
         dispatch(selectedActions.resetSelectedEvent());
     }
 
-
-
-    // console.log('valueOf', selectedDay.valueOf());
-
-    // useEffect(() => {
-    //     const parsedEvents = initializeEvents();
-    //     // Update your Redux state with parsedEvents using an action
-    //     // dispatch(yourAction(parsedEvents));
-    // }, []); // Empty dependency array to run the effect only once
-
-    // useEffect(() => {
-    //     localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
-    // }, [savedEvents]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const calendarEvent = {
@@ -73,17 +56,13 @@ const EventModal = () => {
         }
 
         if (selectedEvent) {
-            console.log('selectedEvent if works');
             handleUpdateEvent(calendarEvent)
             resetSelectedEvent();
         } else {
-            console.log('selectedEvent else works');
             handleAddEvent(calendarEvent)
         }
 
-        // handleAddEvent(calendarEvent);
         handleCloseModal();
-        // localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
     }
 
     useEffect(() => {
