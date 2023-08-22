@@ -28,7 +28,11 @@ const Day = ({ day, rowIndex }) => {
     // console.log('latestEvents', latestEvents);
     // console.log('daySavedEvents', savedEvents);
 
-    const handleSelectedDay = () => {
+    const handleSelectedDay = (e, day) => {
+        const eventContent = e.target.textContent;
+        if(!eventContent) {
+            dispatch(selectedActions.resetSelectedEvent());
+        } 
         dispatch(appActions.setSelectedDay(day))
     }
 
@@ -41,6 +45,7 @@ const Day = ({ day, rowIndex }) => {
     }
 
     const handleSelectedEvent = (eventObj) => {
+        console.log('eventObj', eventObj);
         dispatch(selectedActions.setSelectedEvent(eventObj))
     }
 
@@ -57,8 +62,8 @@ const Day = ({ day, rowIndex }) => {
                     {day.format('DD')}
                 </p>
             </header>
-            <div className={styles['day-box']} onClick={() => {
-                handleSelectedDay(day)
+            <div className={styles['day-box']} onClick={(e) => {
+                handleSelectedDay(e, day)
                 handleShowModal(true)
             }}>
                 {dayEvents.map((evt, i) => (

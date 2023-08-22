@@ -25,7 +25,7 @@ const EventModal = () => {
 
     const dispatch = useDispatch();
 
-    console.log('savedE', savedEvents);
+    // console.log('savedE', savedEvents);
 
     const handleCloseModal = () => {
         dispatch(appActions.setShowModal(false));
@@ -84,6 +84,30 @@ const EventModal = () => {
         handleCloseModal();
         // localStorage.setItem('savedEvents', JSON.stringify(savedEvents));
     }
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (event.target.classList.contains(styles['modal-overlay'])) {
+            dispatch(selectedActions.resetSelectedEvent());
+                handleCloseModal();
+            }
+        };
+
+        const handleKeyPress = (event) => {
+            if (event.key === 'Escape') {
+            dispatch(selectedActions.resetSelectedEvent());
+                handleCloseModal();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+        document.addEventListener('click', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
 
     return (
         <div className={styles['modal-overlay']}>

@@ -24,10 +24,14 @@
 
 .day-paragraph-current {
     background-color: blue;
+    border: 1px solid blue;
     color: white;
     border-radius: 50%;
-    width: 1.25rem;
-    align-items: center;
+    width: 1rem;
+    padding: 0.25rem;
+    text-align: center;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .day-box {

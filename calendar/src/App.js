@@ -55,3 +55,11 @@ function App() {
 }
 
 export default App;
+
+
+//TODO
+// exit on click outside and esc - modal - done
+// improve styling - current date styling on main calendar
+// improve modal styling
+//add labels functionality
+//Check current day styles on mini calendar
