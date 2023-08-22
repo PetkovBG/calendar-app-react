@@ -28,6 +28,7 @@ const EventModal = () => {
     // console.log('savedE', savedEvents);
 
     const handleCloseModal = () => {
+        dispatch(selectedActions.resetSelectedEvent());
         dispatch(appActions.setShowModal(false));
     }
 
@@ -88,14 +89,14 @@ const EventModal = () => {
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if (event.target.classList.contains(styles['modal-overlay'])) {
-            dispatch(selectedActions.resetSelectedEvent());
+                dispatch(selectedActions.resetSelectedEvent());
                 handleCloseModal();
             }
         };
 
         const handleKeyPress = (event) => {
             if (event.key === 'Escape') {
-            dispatch(selectedActions.resetSelectedEvent());
+                dispatch(selectedActions.resetSelectedEvent());
                 handleCloseModal();
             }
         };

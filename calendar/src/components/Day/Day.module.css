@@ -30,6 +30,7 @@
     width: 1rem;
     padding: 0.25rem;
     text-align: center;
+    align-items: center;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
 }
