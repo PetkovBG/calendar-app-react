@@ -38,7 +38,12 @@ const EventModal = () => {
     }
 
     const handleDeleteEvent = (eventObj) => {
-        dispatch(eventActions.deleteEvent(eventObj));
+        let confirm = window.confirm('Are you sure you want to delete this record?');
+        if(confirm) {
+            dispatch(eventActions.deleteEvent(eventObj));
+        } else {
+            return;
+        }
     }
 
     const resetSelectedEvent = () => {
