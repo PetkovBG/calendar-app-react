@@ -7,8 +7,10 @@ Instructions to start the project:
 - npm start
 
 Technologies used:
-Create React App - to initialize the project
-React Hooks - useState, useEffect
-Redux & Redux Toolkit - Global state managementFunctional Components - to define UI elements and their behaviorModule CSS - Styling
-Dayjs - JS library for manipulating and formatting dates and times
-Material Icons - for user interface elements
+- Create React App - to initialize the project
+- React Hooks - useState, useEffect
+- Redux & Redux Toolkit - global state management
+- Functional Components - to define UI elements and their behavior
+- Module CSS - styling
+- Dayjs - JS library for manipulating and formatting dates and times
+- Material Icons - for user interface elements
