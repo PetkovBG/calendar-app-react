@@ -28,9 +28,6 @@ function App() {
     dispatch(appActions.setCurrentMonth(monthIndex));
   }
 
-  const [currentMonth, setCurrentMonth] = useState(getMonth());
-
-
   useEffect(() => {
     updateCurrentMonth();
   }, [monthIndex]);
@@ -50,14 +47,3 @@ function App() {
 }
 
 export default App;
-
-
-//TODO
-// exit on click outside and esc - modal - done
-// improve styling - current date styling on main calendar - done
-// improve modal styling
-//add labels functionality - done
-//Check current day styles on mini calendar
-//check if we need hardcoded events in localStorage upon first load
-//optional - clean up day on calendar with useEffect
-//update labelcolor in sidebar - Labels
