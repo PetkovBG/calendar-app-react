@@ -1,8 +1,7 @@
 import './App.css';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-import { getMonth } from './common/common';
 import Header from './components/Header/Header';
 import Month from './components/Month/Month';
 import SideBar from './components/SideBar/SideBar';
@@ -19,10 +18,6 @@ function App() {
   const currentMonthValue = useSelector(state => state.appContext.currentMonth);
   const showModal = useSelector(state => state.appContext.showModal);
   const dispatch = useDispatch();
-
-  const updateMonthIndex = () => {
-    dispatch(appActions.setMonthIndex(monthIndex));
-  };
 
   const updateCurrentMonth = () => {
     dispatch(appActions.setCurrentMonth(monthIndex));
